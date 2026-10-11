@@ -8,14 +8,14 @@ RUTA = "data/db.json"
 DATOS_INICIALIZADOS = {
             "ultimo_id_contenido": 0,
             "ultimo_id_pelicula": 0,
-            "ultimo_id_peliculaDocumental": 0,
-            "ultimo_id_peliculaEstreno": 0,
-            "ultimo_id_peliculaPremiun": 0,
-            "contenido": [], ## Corchetes sin espacios
-            "pelicula": [],
-            "peliculaDocumental": [],
-            "peliculaEstreno": [],
-            "peliculaPremiun": []
+            "ultimo_id_documental": 0,
+            "ultimo_id_premium": 0,
+            "ultimo_id_estreno": 0,
+            "contenidos": [],
+            "peliculas": [],
+            "peliculas_documentales": [],
+            "peliculas_premium": [],
+            "peliculas_estreno": []
         }
 
 ## Función para cargar/leer la data

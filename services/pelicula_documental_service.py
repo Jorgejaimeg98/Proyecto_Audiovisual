@@ -5,9 +5,9 @@ from utils.generador_id import generar_id
 def crear(datos_dict):
     try:
         base = repo_json.cargar()
-        nuevo_id = generar_id(base, "ultimo_id_pelicula")
+        nuevo_id = generar_id(base, "ultimo_id_documental")
         datos_dict["id_contenido"] = nuevo_id
-        base["peliculas"].append(datos_dict)
+        base["peliculas_documentales"].append(datos_dict)
         repo_json.guardar(base)
         return True, nuevo_id
     except ValueError:
@@ -16,7 +16,7 @@ def crear(datos_dict):
 
 def listar():
     base = repo_json.cargar()
-    return base.get("peliculas", [])
+    return base.get("peliculas_documentales", [])
 
 
 def buscar_por_id(id_buscar):
@@ -28,7 +28,7 @@ def buscar_por_id(id_buscar):
 
 def actualizar(id_buscar, nuevos_datos):
     base = repo_json.cargar()
-    for item in base["peliculas"]:
+    for item in base["peliculas_documentales"]:
         if item["id_contenido"] == id_buscar:
             item.update(nuevos_datos)
             item["id_contenido"] = id_buscar
@@ -39,9 +39,9 @@ def actualizar(id_buscar, nuevos_datos):
 
 def eliminar(id_buscar):
     base = repo_json.cargar()
-    for item in base["peliculas"]:
+    for item in base["peliculas_documentales"]:
         if item["id_contenido"] == id_buscar:
-            base["peliculas"].remove(item)
+            base["peliculas_documentales"].remove(item)
             repo_json.guardar(base)
             return True
     return False
