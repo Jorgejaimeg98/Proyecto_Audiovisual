@@ -73,8 +73,28 @@ def subMenuContenido():
             registros = contenido_srv.listar()
             if not registros:
                 print("No hay contenidos registrados.")
-            for registro in registros:
-                print(registro)
+            else:
+                print("\n================ LISTA DE CONTENIDOS ================")
+                for registro in registros:
+                    print("--------------------------------------------------")
+                    print(f"Id Contenido: {registro['id_contenido']}")
+                    print(f"Título: {registro['titulo']}")
+                    print(f"Sinopsis: {registro['sinopsis']}")
+                    print(f"Idioma original: {registro['idioma_original']}")
+                    print(f"País de origen: {registro['pais_origen']}")
+                    print(f"Clasificación de edad: {registro['clasificacion_edad']}")
+                    print(f"Duración en minutos: {registro['duracion_minutos']}")
+                    print(f"Año de lanzamiento: {registro['ano_lanzamiento']}")
+
+                    if registro["disponible"]:
+                        estado_disponible = "s"
+                    else:
+                        estado_disponible = "n"
+
+                    print(f"¿Está disponible actualmente? (s/n): {estado_disponible}")
+                    print(f"Cantidad inicial de visualizaciones: {registro['visualizaciones']}")
+                    print(f"Calificación base: {registro['calificacion_base']}")
+                print("--------------------------------------------------")
 
         elif opcion == "3":
             id_buscado = leer_entero("Ingrese ID del contenido a actualizar: ", minimo=1)
@@ -104,7 +124,6 @@ def subMenuContenido():
                 cantidad = leer_entero("¿Cuántas visualizaciones desea agregar?: ", minimo=1)
                 resultado = obj.registrar_visualizacion(cantidad)
                 print(resultado)
-                # Guardamos el cambio en la persistencia
                 registro["visualizaciones"] = obj.visualizaciones
                 contenido_srv.actualizar(id_buscado, registro)
             else:
@@ -118,7 +137,6 @@ def subMenuContenido():
                 nuevo_estado = leer_booleano("¿Desea dejarlo Disponible?")
                 resultado = obj.cambiar_disponibilidad(nuevo_estado)
                 print(resultado)
-                # Guardamos el cambio en la persistencia
                 registro["disponible"] = obj.disponible
                 contenido_srv.actualizar(id_buscado, registro)
             else:
@@ -187,8 +205,44 @@ def subMenuPelicula():
             registros = pelicula_srv.listar()
             if not registros:
                 print("No hay películas registradas.")
-            for registro in registros:
-                print(registro)
+            else:
+                print("\n================ LISTA DE PELÍCULAS ================")
+                for registro in registros:
+                    print("--------------------------------------------------")
+                    print(f"Id Película: {registro['id_contenido']}")
+                    print(f"Título: {registro['titulo']}")
+                    print(f"Sinopsis: {registro['sinopsis']}")
+                    print(f"Idioma original: {registro['idioma_original']}")
+                    print(f"País de origen: {registro['pais_origen']}")
+                    print(f"Clasificación de edad: {registro['clasificacion_edad']}")
+                    print(f"Duración en minutos: {registro['duracion_minutos']}")
+                    print(f"Año de lanzamiento: {registro['ano_lanzamiento']}")
+
+                    if registro["disponible"]:
+                        estado_disponible = "s"
+                    else:
+                        estado_disponible = "n"
+
+                    print(f"¿Está disponible actualmente? (s/n): {estado_disponible}")
+                    print(f"Cantidad inicial de visualizaciones: {registro['visualizaciones']}")
+                    print(f"Calificación base: {registro['calificacion_base']}")
+                    print(f"Director: {registro['director']}")
+                    print(f"Productora: {registro['productora']}")
+                    print(f"Género principal: {registro['genero_principal']}")
+                    print(f"Presupuesto (USD): {registro['presupuesto_usd']}")
+                    print(f"Recaudación (USD): {registro['recaudacion_usd']}")
+                    print(f"Resolución máxima: {registro['resolucion_maxima']}")
+
+                    if registro["tiene_subtitulos"]:
+                        estado_subtitulos = "s"
+                    else:
+                        estado_subtitulos = "n"
+
+                    print(f"¿Tiene subtítulos? (s/n): {estado_subtitulos}")
+                    print(f"Cantidad de críticas recibidas: {registro['cantidad_criticas']}")
+                    print(f"Suma total de calificaciones: {registro['suma_calificaciones']}")
+                    print(f"Formato de audio: {registro['formato_audio']}")
+                print("--------------------------------------------------")
 
         elif opcion == "3":
             id_buscado = leer_entero("Ingrese ID de la película a actualizar: ", minimo=1)
@@ -298,8 +352,60 @@ def subMenuDocumental():
             registros = documental_srv.listar()
             if not registros:
                 print("No hay documentales registrados.")
-            for registro in registros:
-                print(registro)
+            else:
+                print("\n================ LISTA DE DOCUMENTALES ================")
+                for registro in registros:
+                    print("--------------------------------------------------")
+                    print(f"Id Documental: {registro['id_contenido']}")
+                    print(f"Título: {registro['titulo']}")
+                    print(f"Sinopsis: {registro['sinopsis']}")
+                    print(f"Idioma original: {registro['idioma_original']}")
+                    print(f"País de origen: {registro['pais_origen']}")
+                    print(f"Clasificación de edad: {registro['clasificacion_edad']}")
+                    print(f"Duración en minutos: {registro['duracion_minutos']}")
+                    print(f"Año de lanzamiento: {registro['ano_lanzamiento']}")
+
+                    if registro["disponible"]:
+                        estado_disponible = "s"
+                    else:
+                        estado_disponible = "n"
+
+                    print(f"¿Está disponible actualmente? (s/n): {estado_disponible}")
+                    print(f"Cantidad inicial de visualizaciones: {registro['visualizaciones']}")
+                    print(f"Calificación base: {registro['calificacion_base']}")
+                    print(f"Director: {registro['director']}")
+                    print(f"Productora: {registro['productora']}")
+                    print(f"Género principal: {registro['genero_principal']}")
+                    print(f"Presupuesto (USD): {registro['presupuesto_usd']}")
+                    print(f"Recaudación (USD): {registro['recaudacion_usd']}")
+                    print(f"Resolución máxima: {registro['resolucion_maxima']}")
+
+                    if registro["tiene_subtitulos"]:
+                        estado_subtitulos = "s"
+                    else:
+                        estado_subtitulos = "n"
+
+                    print(f"¿Tiene subtítulos? (s/n): {estado_subtitulos}")
+                    print(f"Cantidad de críticas recibidas: {registro['cantidad_criticas']}")
+                    print(f"Suma total de calificaciones: {registro['suma_calificaciones']}")
+                    print(f"Formato de audio: {registro['formato_audio']}")
+                    print(f"Temática de investigación: {registro['tematica_investigacion']}")
+                    print(f"Fuente histórica principal: {registro['fuente_historica_principal']}")
+                    print(f"Institución de respaldo: {registro['institucion_respaldo']}")
+
+                    if registro["es_hecho_real"]:
+                        estado_real = "s"
+                    else:
+                        estado_real = "n"
+
+                    print(f"¿Está basado en hechos reales? (s/n): {estado_real}")
+                    print(f"Número de entrevistados: {registro['numero_entrevistados']}")
+                    print(f"Rigor académico (1 a 10): {registro['rigor_academico']}")
+                    print(f"Locación principal de rodaje: {registro['locacion_principal']}")
+                    print(f"Nombre del asesor científico: {registro['asesor_cientifico']}")
+                    print(f"Tipo de material de archivo usado: {registro['archivo_multimedia_usado']}")
+                    print(f"Impacto social estimado (1 a 10): {registro['impacto_social_estimado']}")
+                print("--------------------------------------------------")
 
         elif opcion == "3":
             id_buscado = leer_entero("Ingrese ID del documental a actualizar: ", minimo=1)
@@ -411,8 +517,66 @@ def subMenuPremium():
             registros = premium_srv.listar()
             if not registros:
                 print("No hay películas premium registradas.")
-            for registro in registros:
-                print(registro)
+            else:
+                print("\n================ LISTA DE PELÍCULAS PREMIUM ================")
+                for registro in registros:
+                    print("--------------------------------------------------")
+                    print(f"Id Película Premium: {registro['id_contenido']}")
+                    print(f"Título: {registro['titulo']}")
+                    print(f"Sinopsis: {registro['sinopsis']}")
+                    print(f"Idioma original: {registro['idioma_original']}")
+                    print(f"País de origen: {registro['pais_origen']}")
+                    print(f"Clasificación de edad: {registro['clasificacion_edad']}")
+                    print(f"Duración en minutos: {registro['duracion_minutos']}")
+                    print(f"Año de lanzamiento: {registro['ano_lanzamiento']}")
+
+                    if registro["disponible"]:
+                        estado_disponible = "s"
+                    else:
+                        estado_disponible = "n"
+
+                    print(f"¿Está disponible actualmente? (s/n): {estado_disponible}")
+                    print(f"Cantidad inicial de visualizaciones: {registro['visualizaciones']}")
+                    print(f"Calificación base: {registro['calificacion_base']}")
+                    print(f"Director: {registro['director']}")
+                    print(f"Productora: {registro['productora']}")
+                    print(f"Género principal: {registro['genero_principal']}")
+                    print(f"Presupuesto (USD): {registro['presupuesto_usd']}")
+                    print(f"Recaudación (USD): {registro['recaudacion_usd']}")
+                    print(f"Resolución máxima: {registro['resolucion_maxima']}")
+
+                    if registro["tiene_subtitulos"]:
+                        estado_subtitulos = "s"
+                    else:
+                        estado_subtitulos = "n"
+
+                    print(f"¿Tiene subtítulos? (s/n): {estado_subtitulos}")
+                    print(f"Cantidad de críticas recibidas: {registro['cantidad_criticas']}")
+                    print(f"Suma total de calificaciones: {registro['suma_calificaciones']}")
+                    print(f"Formato de audio: {registro['formato_audio']}")
+                    print(f"Precio base de alquiler (USD): {registro['precio_alquiler_base']}")
+                    print(f"Días de validez del alquiler: {registro['dias_validez_alquiler']}")
+                    print(f"Plan mínimo requerido: {registro['plan_minimo_requerido']}")
+
+                    if registro["permite_descarga_offline"]:
+                        estado_offline = "s"
+                    else:
+                        estado_offline = "n"
+
+                    print(f"¿Permite descarga offline? (s/n): {estado_offline}")
+
+                    if registro["soporte_hdr"]:
+                        estado_hdr = "s"
+                    else:
+                        estado_hdr = "n"
+
+                    print(f"¿Tiene soporte HDR? (s/n): {estado_hdr}")
+                    print(f"Pantallas simultáneas permitidas: {registro['cantidad_pantallas_simultaneas']}")
+                    print(f"Porcentaje de descuento para suscriptores (%): {registro['tasa_descuento_suscripcion']}")
+                    print(f"Región con restricción de emisión: {registro['region_restringida']}")
+                    print(f"Calidad de audio espacial: {registro['calidad_audio_espacial']}")
+                    print(f"Código de licencia DRM: {registro['licencia_drm']}")
+                print("--------------------------------------------------")
 
         elif opcion == "3":
             id_buscado = leer_entero("Ingrese ID de la película premium a actualizar: ", minimo=1)
@@ -525,8 +689,88 @@ def subMenuEstreno():
             registros = estreno_srv.listar()
             if not registros:
                 print("No hay estrenos registrados.")
-            for registro in registros:
-                print(registro)
+            else:
+                print("\n================ LISTA DE PELÍCULAS DE ESTRENO ================")
+                for registro in registros:
+                    print("--------------------------------------------------")
+                    print(f"Id Película Estreno: {registro['id_contenido']}")
+                    print(f"Título: {registro['titulo']}")
+                    print(f"Sinopsis: {registro['sinopsis']}")
+                    print(f"Idioma original: {registro['idioma_original']}")
+                    print(f"País de origen: {registro['pais_origen']}")
+                    print(f"Clasificación de edad: {registro['clasificacion_edad']}")
+                    print(f"Duración en minutos: {registro['duracion_minutos']}")
+                    print(f"Año de lanzamiento: {registro['ano_lanzamiento']}")
+
+                    if registro["disponible"]:
+                        estado_disponible = "s"
+                    else:
+                        estado_disponible = "n"
+
+                    print(f"¿Está disponible actualmente? (s/n): {estado_disponible}")
+                    print(f"Cantidad inicial de visualizaciones: {registro['visualizaciones']}")
+                    print(f"Calificación base: {registro['calificacion_base']}")
+                    print(f"Director: {registro['director']}")
+                    print(f"Productora: {registro['productora']}")
+                    print(f"Género principal: {registro['genero_principal']}")
+                    print(f"Presupuesto (USD): {registro['presupuesto_usd']}")
+                    print(f"Recaudación (USD): {registro['recaudacion_usd']}")
+                    print(f"Resolución máxima: {registro['resolucion_maxima']}")
+
+                    if registro["tiene_subtitulos"]:
+                        estado_subtitulos = "s"
+                    else:
+                        estado_subtitulos = "n"
+
+                    print(f"¿Tiene subtítulos? (s/n): {estado_subtitulos}")
+                    print(f"Cantidad de críticas recibidas: {registro['cantidad_criticas']}")
+                    print(f"Suma total de calificaciones: {registro['suma_calificaciones']}")
+                    print(f"Formato de audio: {registro['formato_audio']}")
+                    print(f"Precio base de alquiler (USD): {registro['precio_alquiler_base']}")
+                    print(f"Días de validez del alquiler: {registro['dias_validez_alquiler']}")
+                    print(f"Plan mínimo requerido: {registro['plan_minimo_requerido']}")
+
+                    if registro["permite_descarga_offline"]:
+                        estado_offline = "s"
+                    else:
+                        estado_offline = "n"
+
+                    print(f"¿Permite descarga offline? (s/n): {estado_offline}")
+
+                    if registro["soporte_hdr"]:
+                        estado_hdr = "s"
+                    else:
+                        estado_hdr = "n"
+
+                    print(f"¿Tiene soporte HDR? (s/n): {estado_hdr}")
+                    print(f"Pantallas simultáneas permitidas: {registro['cantidad_pantallas_simultaneas']}")
+                    print(f"Porcentaje de descuento para suscriptores (%): {registro['tasa_descuento_suscripcion']}")
+                    print(f"Región con restricción de emisión: {registro['region_restringida']}")
+                    print(f"Calidad de audio espacial: {registro['calidad_audio_espacial']}")
+                    print(f"Código de licencia DRM: {registro['licencia_drm']}")
+                    print(f"Fecha de estreno oficial: {registro['fecha_estreno_oficial']}")
+                    print(f"Recargo de taquilla especial (USD): {registro['recargo_taquilla']}")
+
+                    if registro["es_acceso_anticipado"]:
+                        estado_acceso = "s"
+                    else:
+                        estado_acceso = "n"
+
+                    print(f"¿Es pase de acceso anticipado? (s/n): {estado_acceso}")
+                    print(f"Días transcurridos en cartelera: {registro['dias_en_cartelera']}")
+                    print(f"Límite de preventas: {registro['limite_preventas']}")
+                    print(f"Preventas realizadas hasta hoy: {registro['preventas_realizadas']}")
+                    print(f"Cadena de cine aliada: {registro['cadena_cine_asociada']}")
+
+                    if registro["evento_alfombra_roja"]:
+                        estado_alfombra = "s"
+                    else:
+                        estado_alfombra = "n"
+
+                    print(f"¿Incluye evento de alfombra roja digital? (s/n): {estado_alfombra}")
+                    print(f"Días de exclusividad en la plataforma: {registro['tiempo_exclusividad_dias']}")
+                    print(f"URL del trailer exclusivo: {registro['trailer_exclusivo_url']}")
+                print("--------------------------------------------------")
 
         elif opcion == "3":
             id_buscado = leer_entero("Ingrese ID del estreno a actualizar: ", minimo=1)
@@ -564,7 +808,6 @@ def subMenuEstreno():
                 resultado = obj.registrar_fecha_estreno(nueva_fecha)
                 print(resultado)
                 registro["fecha_estreno_oficial"] = obj.fecha_estreno_oficial
-                registro["tiempo_exclusividad_dias"] = obj.tiempo_exclusividad_dias
                 estreno_srv.actualizar(id_buscado, registro)
             else:
                 print("Película de estreno no encontrada.")

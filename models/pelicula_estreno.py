@@ -93,24 +93,9 @@ class PeliculaEstreno(PeliculaPremium):
         self.trailer_exclusivo_url = trailer_exclusivo_url
 
     def calcular_recargo_estreno(self):
-        # Suma directa del precio base y el recargo
         precio_total = self.precio_alquiler_base + self.recargo_taquilla
-        return f"El precio final de estreno para {self.titulo} es: ${precio_total} USD."
+        return f"El precio final de estreno para '{self.titulo}' es: ${precio_total} USD."
 
     def registrar_fecha_estreno(self, nueva_fecha):
-        # Asignación directa
         self.fecha_estreno_oficial = nueva_fecha
         return f"Fecha de estreno actualizada al {self.fecha_estreno_oficial}."
-
-
-    """def calcular_recargo_estreno(self):
-        total = self.precio_alquiler_base + self.recargo_taquilla
-        if self.es_acceso_anticipado:
-            total += 3.50  # Tarifa extra por acceso VIP anticipado
-            return f"Precio total de estreno (con Acceso Anticipado VIP): ${total:.2f} USD."
-        return f"Precio total de estreno: ${total:.2f} USD (Base: ${self.precio_alquiler_base:.2f} + Recargo: ${self.recargo_taquilla:.2f})."
-
-    def registrar_fecha_estreno(self, nueva_fecha, dias_exclusividad):
-        self.fecha_estreno_oficial = nueva_fecha
-        self.tiempo_exclusividad_dias = dias_exclusividad
-        return f"Estreno reprogramado para el {nueva_fecha} con {dias_exclusividad} días de exclusividad."""

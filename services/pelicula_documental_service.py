@@ -10,7 +10,7 @@ def crear(datos_dict):
         base["peliculas_documentales"].append(datos_dict)
         repo_json.guardar(base)
         return True, nuevo_id
-    except ValueError:
+    except (KeyError, OSError, TypeError):
         return False, None
 
 
