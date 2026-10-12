@@ -1,4 +1,4 @@
-def leer_entero(mensaje, minimo=None):
+def leer_entero(mensaje, minimo=None, maximo=None):
     while True:
         try:
             valor = int(input(mensaje))
@@ -6,18 +6,26 @@ def leer_entero(mensaje, minimo=None):
                 if valor < minimo:
                     print(f"El valor debe ser mayor o igual a {minimo}.")
                     continue
+            if maximo is not None:
+                if valor > maximo:
+                    print(f"El valor debe ser menor o igual a {maximo}.")
+                    continue
             return valor
         except ValueError as e:
             print(f"Entrada inválida. Ingrese un número entero. {e}")
 
 
-def leer_flotante(mensaje, minimo=None):
+def leer_flotante(mensaje, minimo=None, maximo=None):
     while True:
         try:
             valor = float(input(mensaje))
             if minimo is not None:
                 if valor < minimo:
                     print(f"El valor debe ser mayor o igual a {minimo}.")
+                    continue
+            if maximo is not None:
+                if valor > maximo:
+                    print(f"El valor debe ser menor o igual a {maximo}.")
                     continue
             return valor
         except ValueError as e:

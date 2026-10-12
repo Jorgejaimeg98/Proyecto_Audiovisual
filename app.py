@@ -28,7 +28,7 @@ def pedir_datos_contenido():
         "ano_lanzamiento": leer_entero("Año de lanzamiento: ", minimo=1895),
         "disponible": leer_booleano("¿Está disponible actualmente?"),
         "visualizaciones": leer_entero("Cantidad inicial de visualizaciones: ", minimo=0),
-        "calificacion_base": leer_flotante("Calificación base (0.0 a 5.0): ", minimo=0.0)
+        "calificacion_base": leer_flotante("Calificación base (0.0 a 5.0): ", minimo=0.0, maximo=5.0)
     }
 
 
@@ -267,7 +267,7 @@ def subMenuPelicula():
             registro = pelicula_srv.buscar_por_id(id_buscado)
             if registro:
                 obj = instanciar_pelicula(registro)
-                nota = leer_flotante("Ingrese nota de calificación (1.0 a 5.0): ", minimo=1.0)
+                nota = leer_flotante("Ingrese nota de calificación (1.0 a 5.0): ", minimo=1.0, maximo=5.0)
                 resultado = obj.registrar_calificacion(nota)
                 print(resultado)
                 registro["cantidad_criticas"] = obj.cantidad_criticas
@@ -302,11 +302,11 @@ def pedir_datos_documental():
         "institucion_respaldo": leer_texto("Institución de respaldo: "),
         "es_hecho_real": leer_booleano("¿Está basado en hechos reales?"),
         "numero_entrevistados": leer_entero("Número de entrevistados: ", minimo=0),
-        "rigor_academico": leer_flotante("Rigor académico (1 a 10): ", minimo=1.0),
+        "rigor_academico": leer_flotante("Rigor académico (1 a 10): ", minimo=1.0, maximo=10.0),
         "locacion_principal": leer_texto("Locación principal de rodaje: "),
         "asesor_cientifico": leer_texto("Nombre del asesor científico: "),
         "archivo_multimedia_usado": leer_texto("Tipo de material de archivo usado: "),
-        "impacto_social_estimado": leer_flotante("Impacto social estimado (1 a 10): ", minimo=1.0)
+        "impacto_social_estimado": leer_flotante("Impacto social estimado (1 a 10): ", minimo=1.0, maximo=10.0),
     })
     return datos
 
@@ -467,7 +467,7 @@ def pedir_datos_premium():
         "permite_descarga_offline": leer_booleano("¿Permite descarga offline?"),
         "soporte_hdr": leer_booleano("¿Tiene soporte HDR?"),
         "cantidad_pantallas_simultaneas": leer_entero("Pantallas simultáneas permitidas: ", minimo=1),
-        "tasa_descuento_suscripcion": leer_flotante("Porcentaje de descuento para suscriptores (%): ", minimo=0.0),
+        "tasa_descuento_suscripcion": leer_flotante("Porcentaje de descuento para suscriptores (%): ", minimo=0.0, maximo=100.0),
         "region_restringida": leer_texto("Región con restricción de emisión: "),
         "calidad_audio_espacial": leer_texto("Calidad de audio espacial: "),
         "licencia_drm": leer_texto("Código de licencia DRM: ")
