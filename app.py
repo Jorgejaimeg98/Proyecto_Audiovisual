@@ -11,7 +11,7 @@ import services.pelicula_documental_service as documental_srv
 import services.pelicula_premium_service as premium_srv
 import services.pelicula_estreno_service as estreno_srv
 
-from utils.validaciones import leer_entero, leer_flotante, leer_booleano, leer_texto
+from utils.validaciones import leer_entero, leer_flotante, leer_booleano, leer_texto, leer_fecha
 
 
 # ==============================================================================
@@ -628,7 +628,7 @@ def subMenuPremium():
 def pedir_datos_estreno():
     datos = pedir_datos_premium()
     datos.update({
-        "fecha_estreno_oficial": leer_texto("Fecha de estreno oficial (AAAA-MM-DD): "),
+        "fecha_estreno_oficial": leer_fecha("Fecha de estreno oficial (AAAA-MM-DD): "),
         "recargo_taquilla": leer_flotante("Recargo de taquilla especial (USD): ", minimo=0.0),
         "es_acceso_anticipado": leer_booleano("¿Es pase de acceso anticipado?"),
         "dias_en_cartelera": leer_entero("Días transcurridos en cartelera: ", minimo=0),
@@ -804,7 +804,7 @@ def subMenuEstreno():
             registro = estreno_srv.buscar_por_id(id_buscado)
             if registro:
                 obj = instanciar_estreno(registro)
-                nueva_fecha = leer_texto("Nueva fecha de estreno (AAAA-MM-DD): ")
+                nueva_fecha = leer_fecha("Nueva fecha de estreno (AAAA-MM-DD): ")
                 resultado = obj.registrar_fecha_estreno(nueva_fecha)
                 print(resultado)
                 registro["fecha_estreno_oficial"] = obj.fecha_estreno_oficial

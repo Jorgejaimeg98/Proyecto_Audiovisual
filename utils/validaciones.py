@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 def leer_entero(mensaje, minimo=None, maximo=None):
     while True:
         try:
@@ -55,3 +58,14 @@ def leer_texto(mensaje):
             return entrada
         except ValueError as e:
             print(f"Entrada inválida. {e}")
+
+
+def leer_fecha(mensaje):
+    while True:
+        try:
+            entrada = input(mensaje).strip()
+            ## strptime válida tanto la estructura YYYY-MM-DD como que el día y mes existan en el calendario
+            datetime.strptime(entrada, "%Y-%m-%d")
+            return entrada
+        except ValueError:
+            print("Fecha inválida. Debe cumplir el formato AAAA-MM-DD (ejemplo: 2026-05-18).")
