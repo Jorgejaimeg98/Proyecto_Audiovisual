@@ -846,7 +846,7 @@ def menuPrincipal():
         elif opcion == "5":
             subMenuEstreno()
         elif opcion == "6":
-            print("Saliendo del sistema...")
+            print("Conexión finalizada de manera segura. Salida exitosa.")
             break
         else:
             print("Opción no válida. Ingrese un número del 1 al 6.")
